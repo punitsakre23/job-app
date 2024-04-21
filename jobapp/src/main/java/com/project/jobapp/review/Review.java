@@ -1,5 +1,6 @@
-package com.project.jobapp.job;
+package com.project.jobapp.review;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.jobapp.company.Company;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,31 +9,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-//@Table(name = "job_table")
-public class Job {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
-    private String minSalary;
-    private String maxSalary;
-    private String location;
+    private Double rating;
 
+    @JsonIgnore
     @ManyToOne
     private Company company;
 
-    public Job() {
-    }
-
-    public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
-        this.location = location;
+    public Review() {
     }
 
     public Long getId() {
@@ -59,28 +49,12 @@ public class Job {
         this.description = description;
     }
 
-    public String getMinSalary() {
-        return minSalary;
+    public Double getRating() {
+        return rating;
     }
 
-    public void setMinSalary(String minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public String getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(String maxSalary) {
-        this.maxSalary = maxSalary;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public Company getCompany() {
